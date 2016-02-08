@@ -1,5 +1,6 @@
 #include <iostream>
 #include <ctime>
+#include <unistd.h>
 using namespace std;
 
 struct Time
@@ -17,11 +18,16 @@ void print_time(Time &t)
 
 int main()
 {
-	int n;
-	n = time(NULL);
-	Time now = {0, 0, 0};
-	now.second = n%60;
-	now.minute = ((n%3600 - (n%3600)%60))/60;
-	now.hour = (((n%86400 - ((n%86400)%3600))/3600)+8)%24;
-	print_time(now);
+	while(1)
+	{
+		cout << "\033c";
+		int n;
+		n = time(NULL);
+		Time now = {0, 0, 0};
+		now.second = n%60;
+		now.minute = ((n%3600 - (n%3600)%60))/60;
+		now.hour = (((n%86400 - ((n%86400)%3600))/3600)+8)%24;
+		print_time(now);
+		usleep(50000);
+	}
 } 
