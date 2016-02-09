@@ -1,0 +1,4 @@
+hi
+just testing
+to see if getline will be seperated because of spaces
+use : getline(cin, string name);
