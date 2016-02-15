@@ -11,9 +11,13 @@ int main()
 	float angle, angle1, angle2;
 	float ha, ma;
 	cout << fixed << setprecision(3);
-	while(hour != 0 && min != 0)
+	while(1)
 	{
 		cin >> hour >> column >> min;
+		if(hour == 0 && min == 0)
+		{
+			break;
+		}
 		ma = min*6;
 		if(min != 0)
 		{
@@ -21,7 +25,14 @@ int main()
 		}
 		else
 		{
-			ha = hour*30;
+			if(hour == 12)
+			{
+				ha = 0;
+			}
+			else
+			{
+				ha = hour*30;
+			}
 		}
 		angle1 = ha - ma;
 		if(angle1 < 0)
@@ -38,8 +49,6 @@ int main()
 			angle = angle1;
 		}
 		cout << angle << endl;
-		hour = 12;
-		min = 59;
 	}
 }
 //setprecision(3)
